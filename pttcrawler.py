@@ -55,7 +55,7 @@ def parseGos(link , g_id):
 		push_content = tag.find("span","push-content").string.replace(' ', '').replace('\n', '').replace('\t', '')
 		push_ipdatetime = tag.find("span","push-ipdatetime").string.replace('\n', '')
 
-		message[num]={"狀態":push_tag,"留言者":push_userid,"留言內容":push_content,"留言時間":push_ipdatetime}
+		message[num]={"tag":push_tag,"留言者":push_userid,"留言內容":push_content,"留言時間":push_ipdatetime}
 		if push_tag == '推 ':
 			g += 1
 		elif push_tag == '噓 ':
