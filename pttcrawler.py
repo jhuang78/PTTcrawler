@@ -55,7 +55,7 @@ def parseGos(link , g_id):
 		push_content = tag.find("span","push-content").string.replace(' ', '').replace('\n', '').replace('\t', '')
 		push_ipdatetime = tag.find("span","push-ipdatetime").string.replace('\n', '')
 
-		message[num]={"tag":push_tag,"留言者":push_userid,"留言內容":push_content,"留言時間":push_ipdatetime}
+		message[num]={"tag":push_tag,"userid":push_userid,"content":push_content,"ipdatetime":push_ipdatetime}
 		if push_tag == '推 ':
 			g += 1
 		elif push_tag == '噓 ':
@@ -64,7 +64,7 @@ def parseGos(link , g_id):
 			n += 1			
 	messageNum = {"g":g,"b":b,"n":n,"all":num}
 	# json-data
-	d={ "a_ID":g_id , "b_作者":author , "c_標題":title , "d_日期":date , "e_ip":ip , "f_內文":content , "g_推文":message, "h_推文總數":messageNum }
+	d={ "id":g_id , "author":author , "title":title , "date":date , "ip":ip , "content":content , "message":message, "messageNum":messageNum }
 	json_data = json.dumps(d,ensure_ascii=False,indent=4,sort_keys=True)+','
 	
 	store(json_data) 
